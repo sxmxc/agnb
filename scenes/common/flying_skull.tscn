@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3wlx0cgsbxm8"]
+
+[ext_resource type="Texture2D" uid="uid://b22w0nk8pgxn1" path="res://assets/aseprite/skull_icon.png" id="1_poe5r"]
+[ext_resource type="Script" path="res://scripts/ui/flying_skull.gd" id="2_eowth"]
+[ext_resource type="Theme" uid="uid://byds11vsd6ber" path="res://themes/pixelart/pixelart.tres" id="3_vyov2"]
+[ext_resource type="Texture2D" uid="uid://fm78v1mpxgae" path="res://assets/aseprite/speech_bubble.png" id="4_iyw2c"]
+[ext_resource type="FontFile" uid="uid://cbinyb8ofhnb0" path="res://fonts/8-bit-hud.ttf" id="5_g1yef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nshdy"]
+
+[node name="FlyingSkull" type="Sprite2D"]
+texture = ExtResource("1_poe5r")
+script = ExtResource("2_eowth")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-8, -8, 16, 16)
+
+[node name="CommentBallon" type="PanelContainer" parent="."]
+anchors_preset = -1
+offset_left = -22.0
+offset_top = -28.0
+offset_right = 73.0
+offset_bottom = -5.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nshdy")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CommentBallon"]
+layout_mode = 2
+theme = ExtResource("3_vyov2")
+texture = ExtResource("4_iyw2c")
+region_rect = Rect2(0, 0, 64, 32.0412)
+patch_margin_left = 2
+patch_margin_top = 3
+patch_margin_right = 2
+patch_margin_bottom = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="CommentBallon"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 12
+
+[node name="CommentLabel" type="RichTextLabel" parent="CommentBallon/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0.152941, 0.152941, 0.266667, 1)
+theme_override_fonts/normal_font = ExtResource("5_g1yef")
+theme_override_font_sizes/normal_font_size = 5
+text = "Quirky Comment!"
+fit_content = true

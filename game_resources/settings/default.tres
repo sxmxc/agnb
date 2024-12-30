@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GameSettings" load_steps=2 format=3 uid="uid://bxr87pwrckedg"]
+
+[ext_resource type="Script" path="res://scripts/resources/settings/game_settings.gd" id="1_ikuum"]
+
+[resource]
+script = ExtResource("1_ikuum")
+master_volume = 1.0
+music_volume = 1.0
+sfx_volume = 1.0
+ui_sound_enabled = true

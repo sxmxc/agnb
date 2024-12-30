@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://djujqcbughbl"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_kcrr8"]
+[ext_resource type="Theme" uid="uid://byds11vsd6ber" path="res://themes/pixelart/pixelart.tres" id="2_807cf"]
+[ext_resource type="Resource" uid="uid://cdej5k1cu7xm3" path="res://game_resources/value_refs/is_paused_reference.tres" id="3_ahtvt"]
+[ext_resource type="PackedScene" path="res://scenes/common/ui/mute_button.tscn" id="3_gjyvc"]
+[ext_resource type="Resource" uid="uid://d1xvpg7cf381r" path="res://game_resources/value_refs/is_game_over_ref.tres" id="4_3wm2w"]
+[ext_resource type="PackedScene" path="res://scenes/common/ui/save_button.tscn" id="4_hed7j"]
+[ext_resource type="PackedScene" path="res://scenes/common/ui/load_button.tscn" id="5_mxgd3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j07ig"]
+font_size = 50
+font_color = Color(0.984314, 0.960784, 0.937255, 1)
+
+[node name="pause_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("2_807cf")
+script = ExtResource("1_kcrr8")
+is_paused = ExtResource("3_ahtvt")
+is_game_over = ExtResource("4_3wm2w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.152941, 0.152941, 0.266667, 0.87451)
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="AspectRatioContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_j07ig")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="save_button" parent="AspectRatioContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("4_hed7j")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="load_button" parent="AspectRatioContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("5_mxgd3")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="mute_button" parent="." instance=ExtResource("3_gjyvc")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -110.0
+offset_right = 110.0
+offset_bottom = -10.0
+grow_vertical = 0

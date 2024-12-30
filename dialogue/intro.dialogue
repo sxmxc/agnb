@@ -1,0 +1,12 @@
+using GameManager
+~ Level1
+Roger: Oi!
+Roger: Oi! Where’s me bloody body gone?
+Roger: ...Cor blimey, is that it over there?[do pan_to_goal_cam()]
+Roger: What’s it doin’ all the way over there, then? Having a cuppa without me?[do pan_to_active_cam()]
+Roger: Right, guess I’ve gotta hop me way over. Typical, innit?
+: [i]Press the 'A' and 'D' keys to tilt Roger.[/i]
+: [i]Press the 'S' to brake Roger.[/i]
+: [i]Press the 'W' to face Roger up.[/i]
+: [i]Press the 'SPACE' key to launch Roger.[/i] 
+=> END

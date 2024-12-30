@@ -1,0 +1,176 @@
+[gd_scene load_steps=11 format=3 uid="uid://73jm5qjy52vq"]
+
+[ext_resource type="Script" path="res://dialogue/balloons/dialogue_panel.gd" id="1_jvunn"]
+[ext_resource type="Theme" uid="uid://byds11vsd6ber" path="res://themes/pixelart/pixelart.tres" id="2_w6qwy"]
+[ext_resource type="Texture2D" uid="uid://c8yfrjpm5qqjt" path="res://sprites/ui/ui-tileset.png" id="3_2xdx0"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="4_6gk5v"]
+[ext_resource type="Texture2D" uid="uid://b22w0nk8pgxn1" path="res://assets/aseprite/skull_icon.png" id="5_4bxmi"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="5_pxfoy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7k5c"]
+atlas = ExtResource("3_2xdx0")
+region = Rect2(36, 6, 22, 19)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5kmg2"]
+load_path = "res://.godot/imported/ui-tileset.png-4e079bf45a4433c8ab4b9709b030acb8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpwj3"]
+atlas = SubResource("CompressedTexture2D_5kmg2")
+region = Rect2(5, 11, 22, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxqhu"]
+atlas = ExtResource("3_2xdx0")
+region = Rect2(72, 8, 16, 16)
+
+[node name="DialoguePanel" type="CanvasLayer"]
+layer = 50
+script = ExtResource("1_jvunn")
+
+[node name="Balloon" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_w6qwy")
+
+[node name="Responses" type="MarginContainer" parent="Balloon"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = -558.0
+offset_right = 494.0
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+script = ExtResource("5_pxfoy")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
+layout_mode = 2
+text = "Response example"
+
+[node name="MarginContainer" type="MarginContainer" parent="Balloon"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 81
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Speech" type="TextureRect" parent="Balloon/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_b7k5c")
+
+[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/Speech"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="Balloon/MarginContainer/Speech/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wpwj3")
+
+[node name="Dialogue" type="MarginContainer" parent="Balloon/MarginContainer/Speech"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/Speech/Dialogue"]
+layout_mode = 2
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/Speech/Dialogue/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "Character"
+fit_content = true
+scroll_active = false
+
+[node name="DialogueLabel" parent="Balloon/MarginContainer/Speech/Dialogue/VBoxContainer" instance=ExtResource("4_6gk5v")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Dialogue..."
+
+[node name="PortraitContainer" type="TextureRect" parent="Balloon/MarginContainer/Speech"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -72.0
+offset_right = -1.0
+offset_bottom = 71.0
+texture = SubResource("AtlasTexture_wxqhu")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Balloon/MarginContainer/Speech/PortraitContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="Balloon/MarginContainer/Speech/PortraitContainer/MarginContainer2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wpwj3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/Speech/PortraitContainer/MarginContainer2/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Portrait" type="TextureRect" parent="Balloon/MarginContainer/Speech/PortraitContainer/MarginContainer2/TextureRect/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("5_4bxmi")
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

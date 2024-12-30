@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsdgbgne1pghw"]
+
+[ext_resource type="Script" path="res://scripts/interaction/world_items/door_interactable.gd" id="1_jxebt"]
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://dialogue/balloons/dialogue_panel.tscn" id="2_t01nj"]
+[ext_resource type="Resource" uid="uid://cpwdpgnfslnge" path="res://dialogue/locked_door.dialogue" id="3_uew2d"]
+[ext_resource type="Script" path="res://scripts/gameplay/door.gd" id="4_v4bch"]
+[ext_resource type="Texture2D" uid="uid://13dii1ared48" path="res://assets/aseprite/door_v1.png" id="5_be3ai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlgsy"]
+size = Vector2(30, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uk0w"]
+atlas = ExtResource("5_be3ai")
+region = Rect2(1, 0, 14, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahaha"]
+atlas = ExtResource("5_be3ai")
+region = Rect2(17, 0, 25, 32)
+
+[node name="DoorInteractable" type="Area2D" node_paths=PackedStringArray("door") groups=["Saveable"]]
+position = Vector2(2, -6)
+script = ExtResource("1_jxebt")
+door = NodePath("Door")
+balloon_scene = ExtResource("2_t01nj")
+dialogue = ExtResource("3_uew2d")
+dialogue_title = "Level1"
+
+[node name="InteractionArea" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 2.5)
+shape = SubResource("RectangleShape2D_jlgsy")
+
+[node name="Door" type="StaticBody2D" parent="." groups=["Saveable"]]
+collision_layer = 4
+script = ExtResource("4_v4bch")
+
+[node name="SpriteClosed" type="Sprite2D" parent="Door"]
+texture = SubResource("AtlasTexture_5uk0w")
+
+[node name="SpriteOpen" type="Sprite2D" parent="Door"]
+visible = false
+position = Vector2(5, 0)
+texture = SubResource("AtlasTexture_ahaha")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door"]
+polygon = PackedVector2Array(-7, -16, -7, -11, -2, -11, -2, 16, 1, 16, 1, 14, 2, 14, 2, 11, 1, 11, 1, -4, 2, -4, 2, -7, 1, -7, 1, -11, 7, -11, 7, -16)

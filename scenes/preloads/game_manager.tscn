@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://4804upl65m55"]
+
+[ext_resource type="Script" path="res://scripts/preloads/game_manager.gd" id="1_ao5q4"]
+
+[sub_resource type="Environment" id="Environment_felbi"]
+background_mode = 3
+background_canvas_max_layer = 500
+tonemap_mode = 3
+
+[node name="GameManager" type="Node" groups=["Saveable"]]
+script = ExtResource("1_ao5q4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_felbi")
