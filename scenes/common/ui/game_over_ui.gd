@@ -13,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_game_over():
@@ -22,3 +22,20 @@ func _on_game_over():
 	SoundManager.play_music(DataManager.audio_dict["game_over_song"])
 	visible = true
 	pass
+
+
+func _on_retry_button_pressed():
+	GameManager.reset_player()
+	get_tree().reload_current_scene()
+	pass # Replace with function body.
+
+
+func _on_quit_button_pressed():
+	SoundManager.play_ui_sound_random_pitch(DataManager.audio_dict["ui_select"])
+	SceneTransitionManager.change_scene_with_transition(
+		DataManager.config["main_menu_scene"],
+		DataManager.config["transition_scene"]
+	)
+	get_tree().paused = false
+	visible = false
+	pass # Replace with function body.

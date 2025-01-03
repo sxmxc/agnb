@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/camera/camera_area.gd" id="1_8pibv"]
 [ext_resource type="Resource" uid="uid://cpda1sleldpvn" path="res://game_resources/events/camera_area_entered_event.tres" id="2_55ugk"]
-[ext_resource type="Resource" path="res://game_resources/events/camera_area_exited_event.tres" id="3_liu4e"]
+[ext_resource type="Resource" uid="uid://ba4othwbtntn4" path="res://game_resources/events/camera_area_exited_event.tres" id="3_liu4e"]
 
 [node name="camera_area 1" type="Area2D"]
 process_priority = 100

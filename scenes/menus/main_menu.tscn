@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dgfwbbb5te0rm" path="res://scenes/scene_transitions/circle_transition.tscn" id="3_lqaap"]
 [ext_resource type="Texture2D" uid="uid://8l4kraegpb8d" path="res://assets/aseprite/Stars.png" id="4_2d32d"]
 [ext_resource type="Script" path="res://scripts/ui/settings_control.gd" id="4_mjs4o"]
-[ext_resource type="PackedScene" uid="uid://cisead2tfnprn" path="res://scenes/worlds/world_1.tscn" id="5_blcnv"]
+[ext_resource type="PackedScene" uid="uid://cqcl1t3tfmgxr" path="res://scenes/worlds/world_1.tscn" id="5_blcnv"]
 [ext_resource type="Texture2D" uid="uid://c4n1oksn0l5yb" path="res://assets/aseprite/Mountains.png" id="5_wxrq0"]
 [ext_resource type="Script" path="res://scripts/ui/viewport_container.gd" id="6_8dq4u"]
 [ext_resource type="Texture2D" uid="uid://bjd2q4bdwi8i5" path="res://assets/aseprite/skull.png" id="8_om0o8"]
-[ext_resource type="PackedScene" path="res://scenes/common/ui/load_button.tscn" id="9_ijoqn"]
+[ext_resource type="PackedScene" uid="uid://dj23d3rfwfmvs" path="res://scenes/common/ui/load_button.tscn" id="9_ijoqn"]
 [ext_resource type="Resource" uid="uid://bxr87pwrckedg" path="res://game_resources/settings/default.tres" id="10_2cibs"]
 [ext_resource type="Script" path="res://scripts/ui/skull_launcher.gd" id="11_ov5iy"]
 [ext_resource type="FontFile" uid="uid://cbinyb8ofhnb0" path="res://fonts/8-bit-hud.ttf" id="15_mkpi7"]
@@ -1091,6 +1091,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_0bcbq")
@@ -1143,8 +1145,6 @@ text = "Start"
 
 [node name="load_button" parent="Main Menu/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("9_ijoqn")]
 layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 1
 text = "Continue"
 
 [node name="settings_button" type="Button" parent="Main Menu/MarginContainer/VBoxContainer/VBoxContainer"]

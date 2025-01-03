@@ -2,6 +2,11 @@ extends Node
 
 enum PickupType {KEY,COIN,LIFE}
 
+var config = {
+	"transition_scene": preload("res://scenes/scene_transitions/circle_transition.tscn"),
+	"main_menu_scene": preload("res://scenes/menus/main_menu.tscn")
+}
+
 var audio_dict = {
 	"main_theme_song" :  preload("res://assets/audio/music/Bone Yard Waltz - Loopable.ogg"),
 	"game_over_song": preload("res://assets/audio/music/Dungeon Theme.mp3"),
@@ -42,5 +47,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

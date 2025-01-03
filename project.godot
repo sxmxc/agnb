@@ -15,11 +15,13 @@ AutoExportVersion/version_config_file="res://config/auto_export_version_config_f
 [application]
 
 config/name="aintgotnobody"
-config/version="0.0.1"
+config/version="0.0.0.1"
+config/tags=PackedStringArray("gd4")
 run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/use_filter=false
-config/icon="res://assets/aseprite/skull_icon.png"
+config/icon="res://assets/aseprite/skull_icon_128.png"
+config/windows_native_icon="res://assets/aseprite/icon.ico"
 
 [audio]
 
@@ -52,7 +54,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/AutoExportVersion/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/ldtk-importer/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/AutoExportVersion/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
 
 [global_group]
 
@@ -107,6 +109,16 @@ reset_rotation={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
 ]
 }
+fine_tune_right={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":true,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":68,"location":0,"echo":false,"script":null)
+]
+}
+fine_tune_left={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":true,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":65,"location":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
@@ -123,12 +135,17 @@ locale/translations_pot_files=PackedStringArray("res://dialogue/intro.dialogue",
 [physics]
 
 2d/run_on_separate_thread=true
-2d/physics_engine="Rapier2D"
+common/physics_jitter_fix=0.0
+2d/physics_engine="GodotPhysics2D"
 common/physics_interpolation=true
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 textures/lossless_compression/force_png=true
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/decals/filter=4
+textures/light_projectors/filter=4
+environment/volumetric_fog/use_filter=0
+viewport/hdr_2d=true
 2d/snap/snap_2d_transforms_to_pixel=true
-2d/snap/snap_2d_vertices_to_pixel=true

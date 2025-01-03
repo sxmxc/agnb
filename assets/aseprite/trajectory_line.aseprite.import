@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://brcjijqbse8cv"
+path="res://.godot/imported/trajectory_line.aseprite-2490fde2a4a2e2e76d9101fa1125c2f9.res"
+
+[deps]
+
+source_file="res://assets/aseprite/trajectory_line.aseprite"
+dest_files=["res://.godot/imported/trajectory_line.aseprite-2490fde2a4a2e2e76d9101fa1125c2f9.res"]
+
+[params]
+

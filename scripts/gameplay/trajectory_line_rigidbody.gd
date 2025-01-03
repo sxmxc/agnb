@@ -9,10 +9,12 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func update_trajectory(dir: Vector2, speed: float, gravity: float, delta: float):
+	if is_queued_for_deletion():
+		return
 	var drag: float = ProjectSettings.get_setting("physics/2d/default_linear_damp")
 	var max_points = 100
 	clear_points()
@@ -39,3 +41,15 @@ func raycast_query2d(a: Vector2, b: Vector2) -> Dictionary:
 	if result:
 		return result
 	return {}
+
+func shapecast_query2d(a: Vector2, b: Vector2, delta) -> Array[Dictionary]:
+	var space_state := get_world_2d().direct_space_state
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.shape = get_parent().collision_shape_2d
+	query.collision_mask = scan_layers
+	query.motion = a.move_toward(b, delta)
+	var result = space_state.intersect_shape(query)
+	if result:
+		return result
+	return [{}]
+	

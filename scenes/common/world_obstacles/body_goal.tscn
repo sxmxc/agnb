@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://lla1605wjeq4"]
+
+[ext_resource type="Script" path="res://scripts/interaction/dialog/dialogue_interactable.gd" id="1_h6nip"]
+[ext_resource type="Resource" uid="uid://8gatgf2uan6p" path="res://game_resources/events/level_end.tres" id="2_dg0rw"]
+[ext_resource type="Texture2D" uid="uid://ctf8j0kshmo2n" path="res://assets/aseprite/body_1.png" id="4_4ow3o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fw026"]
+
+[node name="BodyGoal" type="Area2D"]
+visibility_layer = 3
+position = Vector2(1728, 254)
+script = ExtResource("1_h6nip")
+event = ExtResource("2_dg0rw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fw026")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 3
+texture_filter = 1
+texture = ExtResource("4_4ow3o")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": true,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://assets/aseprite",
+"o_name": "",
+"only_visible": true,
+"player": "",
+"slice": "",
+"source": "res://assets/aseprite/body_1.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "e5ae845902d57839a148b454ced0b25e"

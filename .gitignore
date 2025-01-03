@@ -1,7 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
-build*/
-templates/
-*.import
+/android/
+*.translation
+/build
 
-.vscode/
+.vscode

@@ -1,4 +1,5 @@
 extends Node2D
+class_name GoalCam
 
 @onready var phantom_camera_2d = $PhantomCamera2D
 
@@ -8,5 +9,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

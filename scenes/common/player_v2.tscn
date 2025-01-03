@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dwgu8mmkg8quo"]
+[gd_scene load_steps=41 format=3 uid="uid://dwgu8mmkg8quo"]
 
 [ext_resource type="Texture2D" uid="uid://bmeq00bg8akee" path="res://assets/aseprite/skull_sheet.png" id="1_7h684"]
 [ext_resource type="Script" path="res://scripts/movement/player_v_2.gd" id="1_54d81"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c76c8cfvtehev" path="res://assets/aseprite/Line.png" id="4_ow7og"]
 [ext_resource type="Script" path="res://scripts/gameplay/trajectory_line_rigidbody.gd" id="7_6jhbs"]
 [ext_resource type="Script" path="res://scenes/common/ui/debug_ui.gd" id="7_rdl5g"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="9_fh5lr"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/phantom_camera_noise_2d.gd" id="10_dvx8n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lf0f5"]
 radius = 7.0
@@ -156,6 +158,61 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_43rpt"]
 shader = ExtResource("3_bvk4c")
 
+[sub_resource type="Resource" id="Resource_qvrhe"]
+script = ExtResource("10_dvx8n")
+amplitude = 10.0
+frequency = 10.0
+randomize_noise_seed = 1
+noise_seed = 392
+positional_noise = true
+rotational_noise = true
+positional_multiplier_x = 1.0
+positional_multiplier_y = 1.0
+rotational_multiplier = 1.0
+
+[sub_resource type="CurveTexture" id="CurveTexture_uurjj"]
+
+[sub_resource type="Curve" id="Curve_g46o6"]
+max_value = 2.0
+_data = [Vector2(0, 2), 0.0, -2.0, 0, 1, Vector2(1, 0), -2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cejox"]
+curve = SubResource("Curve_g46o6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oo3g3"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 35, 0)
+linear_accel_min = -1.0
+linear_accel_max = 0.999998
+linear_accel_curve = SubResource("CurveTexture_uurjj")
+scale_curve = SubResource("CurveTexture_cejox")
+color = Color(0.94902, 0.827451, 0.670588, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="Curve" id="Curve_lpqyj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98892, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5sfx2"]
+curve = SubResource("Curve_lpqyj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dcgcu"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 8, 0)
+angle_min = -54.4
+angle_max = 105.2
+spread = 180.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_5sfx2")
+color = Color(0.152941, 0.152941, 0.266667, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["Saveable", "player"]]
 visibility_layer = 3
 collision_mask = 12
@@ -163,6 +220,7 @@ floor_stop_on_slope = false
 floor_constant_speed = true
 script = ExtResource("1_54d81")
 push_force = 300.0
+tilt_speed = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lf0f5")
@@ -348,3 +406,30 @@ unique_name_in_owner = true
 rotation = -2.35619
 target_position = Vector2(0, 16)
 collision_mask = 12
+
+[node name="PhantomCameraNoiseEmitter2D" type="Node2D" parent="."]
+script = ExtResource("9_fh5lr")
+noise = SubResource("Resource_qvrhe")
+duration = 0.1
+decay_time = 0.403421
+
+[node name="DeathParticles" type="GPUParticles2D" parent="."]
+physics_interpolation_mode = 1
+emitting = false
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_oo3g3")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.03
+local_coords = true
+
+[node name="ImpactParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_dcgcu")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+draw_order = 2

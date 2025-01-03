@@ -23,15 +23,20 @@ extends Node
 
 var current_sidecar: WorldSidecar = null
 
+func reset_player():
+	held_keys = 0
+	num_coins = 0
+	num_lives = 3
+
 func pan_to_goal_cam():
 	if !current_sidecar:
 		return
-	current_sidecar.goal_camera.set_priority(30)
+	current_sidecar.goal_camera.phantom_camera_2d.set_priority(30)
 
 func pan_to_active_cam():
 	if !current_sidecar:
 		return
-	current_sidecar.goal_camera.set_priority(0)
+	current_sidecar.goal_camera.phantom_camera_2d.set_priority(0)
 
 func set_level(sidecar: WorldSidecar):
 	current_sidecar = sidecar

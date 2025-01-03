@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://dh0uj2raus41h"
+path="res://.godot/imported/speech_bubble.aseprite-a9a7ba43fb1fbac807ec8acccddc0fe5.res"
+
+[deps]
+
+source_file="res://assets/aseprite/speech_bubble.aseprite"
+dest_files=["res://.godot/imported/speech_bubble.aseprite-a9a7ba43fb1fbac807ec8acccddc0fe5.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://c06isovsc4geo"]
 
 [ext_resource type="Texture2D" uid="uid://c8yfrjpm5qqjt" path="res://sprites/ui/ui-tileset.png" id="1_pkq8c"]
 [ext_resource type="Script" path="res://scripts/ui/mute_button.gd" id="2_8d5e4"]

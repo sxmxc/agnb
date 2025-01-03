@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://cpihnvatitu2y"]
+
+[ext_resource type="PackedScene" uid="uid://b2kk6vvopxhev" path="res://scenes/common/ui/player_hud.tscn" id="1_70k36"]
+[ext_resource type="Texture2D" uid="uid://c8yfrjpm5qqjt" path="res://sprites/ui/ui-tileset.png" id="2_o8pkf"]
+[ext_resource type="Shader" path="res://shaders/minimap.gdshader" id="3_otvun"]
+[ext_resource type="Script" path="res://scripts/ui/viewport_texture_rect.gd" id="4_tqvho"]
+[ext_resource type="PackedScene" uid="uid://djujqcbughbl" path="res://scenes/common/ui/pause_menu.tscn" id="5_nqmo1"]
+[ext_resource type="PackedScene" uid="uid://daq3d1xyojm4y" path="res://scenes/common/ui/game_over_ui.tscn" id="6_hbtl2"]
+[ext_resource type="Resource" uid="uid://d1xvpg7cf381r" path="res://game_resources/value_refs/is_game_over_ref.tres" id="7_n3akw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f8b2"]
+atlas = ExtResource("2_o8pkf")
+region = Rect2(69, 4, 21, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5oti"]
+shader = ExtResource("3_otvun")
+shader_parameter/color = Color(0.545098, 0.427451, 0.611765, 1)
+shader_parameter/background_color = Color(0.152941, 0.152941, 0.266667, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bbpf2"]
+viewport_path = NodePath("minimap_viewport")
+
+[node name="ui" type="CanvasLayer"]
+layer = 100
+
+[node name="player_hud" parent="." instance=ExtResource("1_70k36")]
+unique_name_in_owner = true
+
+[node name="minimap" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 477.0
+offset_top = 46.0
+offset_right = -163.0
+offset_bottom = -314.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="minimap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -12.0
+offset_right = 150.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_6f8b2")
+
+[node name="MarginContainer" type="MarginContainer" parent="minimap/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="minimap/TextureRect2/MarginContainer" node_paths=PackedStringArray("viewport")]
+material = SubResource("ShaderMaterial_l5oti")
+layout_mode = 2
+texture = SubResource("ViewportTexture_bbpf2")
+expand_mode = 3
+script = ExtResource("4_tqvho")
+viewport = NodePath("")
+
+[node name="pause_menu" parent="." instance=ExtResource("5_nqmo1")]
+offset_left = -3.0
+offset_right = -3.0
+
+[node name="GameOverUI" parent="." instance=ExtResource("6_hbtl2")]
+visible = false
+is_game_over = ExtResource("7_n3akw")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://b7vkvfpwhuq0d"
+path="res://.godot/imported/not_my_body.dialogue-f3640547c3c757e3122e24b116309774.tres"
+
+[deps]
+
+source_file="res://dialogue/not_my_body.dialogue"
+dest_files=["res://.godot/imported/not_my_body.dialogue-f3640547c3c757e3122e24b116309774.tres"]
+
+[params]
+
+defaults=true

@@ -27,6 +27,30 @@ func play(resource: AudioStream, position: float = 0.0, volume: float = 0.0, cro
 	player.call_deferred("play", position)
 	return player
 
+func play_queue(resource: AudioStreamPlaylist, position: float = 0.0, volume: float = 0.0, crossfade_duration: float = 0.0, override_bus: String = "") -> AudioStreamPlayer:
+	stop(crossfade_duration * 2)
+
+	var player = _get_player_with_music(resource)
+
+	# If the player already exists then just make sure the volume is right (it might have just been fading in or out)
+	if player != null:
+		fade_volume(player, player.volume_db, volume, crossfade_duration)
+		return player
+
+	# Otherwise we need to prep another player and handle its introduction
+	player = prepare(resource, override_bus)
+	fade_volume(player, -80.0, volume, crossfade_duration)
+
+	# Remember this track name
+	if resource.stream_count > 0:
+		for x in resource.stream_count:
+			track_history.insert(0, resource.get_list_stream(x).resource_path)
+		if track_history.size() > 50:
+			track_history.remove_at(50)
+
+	player.call_deferred("play", position)
+	return player
+
 
 func is_playing(resource: AudioStream) -> bool:
 	if resource != null:

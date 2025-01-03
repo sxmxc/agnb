@@ -13,7 +13,7 @@ signal on_interact
 func _ready():
 	indicator.hide()
 
-func _process(_delta):
+func _physics_process(_delta):
 	global_position = get_parent().global_position
 	indicator.visible = interactable_in_range
 	if Input.is_action_just_pressed(action):

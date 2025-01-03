@@ -7,18 +7,23 @@ class_name Player extends CharacterBody2D
 @export var brake_factor: float = 1.0
 @export var rotation_correction_speed: float = 0.2
 @export var bounciness: float = 0.5
-@export var friction: float = 0.5
-
+#@export var friction: float = 0.5
 @onready var drag : float = ProjectSettings.get_setting("physics/2d/default_linear_damp")
 @onready var ground_ray: RayCast2D = %RayCast2D
 @onready var trajectory_line: Line2D = %TrajectoryLine
 @onready var debug_ui = $Debug/DebugUI
+@onready var collision_shape_2d = $CollisionShape2D
+@onready var pcam_noise = $PhantomCameraNoiseEmitter2D
+@onready var death_particles : GPUParticles2D = $DeathParticles
+@onready var sprite = $Sprite
+@onready var impact_particles = $ImpactParticles
 
 # States
 var braking_requested: bool = false
 var reset_rotation_requested: bool = false
 var is_grounded: bool = false
 var is_jumping: bool = false
+var is_dying: bool = false
 var control_locked: bool = false
 #var _is_on_floor: bool = false
 
@@ -28,7 +33,9 @@ func _ready():
 	debug_ui.register(self)
 
 func _physics_process(delta):
-	if control_locked:
+	if control_locked or is_dying:
+		if trajectory_line.get_point_count() > 0:
+			trajectory_line.clear_points()
 		return
 	_check_floor()
 	if is_grounded:
@@ -44,10 +51,16 @@ func _physics_process(delta):
 
 func _apply_rotation(delta):
 	if Input.is_action_pressed("move_left"):
-		rotation -= tilt_speed * delta
+		if Input.is_action_pressed("fine_tune_left"):
+			rotation -= (tilt_speed/4) * delta
+		else:
+			rotation -= tilt_speed * delta
 		_update_trajectory(delta)
 	elif Input.is_action_pressed("move_right"):
-		rotation += tilt_speed * delta
+		if Input.is_action_pressed("fine_tune_right"):
+			rotation += (tilt_speed/4) * delta
+		else:
+			rotation += tilt_speed * delta
 		_update_trajectory(delta)
 		# Reset orientation
 	if !reset_rotation_requested:
@@ -103,6 +116,8 @@ func _check_floor():
 func _on_touch_floor():
 	is_jumping = false
 	SoundManager.play_sound_random_pitch(DataManager.audio_dict["impact"])
+	impact_particles.emitting = true
+	pcam_noise.emit()
 	pass
 	
 func _on_leave_floor():
@@ -119,4 +134,10 @@ func _update_trajectory(delta):
 	)
 
 func die():
+	is_dying = true
+	sprite.hide()
+	death_particles.emitting = true
+	await get_tree().create_timer(2).timeout
 	EventBus.player_died.emit(self)
+	call_deferred("queue_free")
+	

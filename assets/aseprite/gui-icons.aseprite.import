@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://bb23guuetlavd"
+path="res://.godot/imported/gui-icons.aseprite-1bcdcb2ea188dc0500c4ad242b200377.res"
+
+[deps]
+
+source_file="res://assets/aseprite/gui-icons.aseprite"
+dest_files=["res://.godot/imported/gui-icons.aseprite-1bcdcb2ea188dc0500c4ad242b200377.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=true

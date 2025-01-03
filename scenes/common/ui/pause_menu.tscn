@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://djujqcbughbl"]
+[gd_scene load_steps=10 format=3 uid="uid://djujqcbughbl"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_kcrr8"]
 [ext_resource type="Theme" uid="uid://byds11vsd6ber" path="res://themes/pixelart/pixelart.tres" id="2_807cf"]
 [ext_resource type="Resource" uid="uid://cdej5k1cu7xm3" path="res://game_resources/value_refs/is_paused_reference.tres" id="3_ahtvt"]
-[ext_resource type="PackedScene" path="res://scenes/common/ui/mute_button.tscn" id="3_gjyvc"]
+[ext_resource type="PackedScene" uid="uid://c06isovsc4geo" path="res://scenes/common/ui/mute_button.tscn" id="3_gjyvc"]
 [ext_resource type="Resource" uid="uid://d1xvpg7cf381r" path="res://game_resources/value_refs/is_game_over_ref.tres" id="4_3wm2w"]
-[ext_resource type="PackedScene" path="res://scenes/common/ui/save_button.tscn" id="4_hed7j"]
-[ext_resource type="PackedScene" path="res://scenes/common/ui/load_button.tscn" id="5_mxgd3"]
+[ext_resource type="PackedScene" uid="uid://d3shworc1cbla" path="res://scenes/common/ui/save_button.tscn" id="4_hed7j"]
+[ext_resource type="Resource" uid="uid://b7e4bh0bk7uky" path="res://game_resources/value_refs/is_level_ended.tres" id="5_fppj2"]
+[ext_resource type="PackedScene" uid="uid://dj23d3rfwfmvs" path="res://scenes/common/ui/load_button.tscn" id="5_mxgd3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j07ig"]
 font_size = 50
@@ -25,6 +26,7 @@ theme = ExtResource("2_807cf")
 script = ExtResource("1_kcrr8")
 is_paused = ExtResource("3_ahtvt")
 is_game_over = ExtResource("4_3wm2w")
+is_level_over = ExtResource("5_fppj2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

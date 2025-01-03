@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://1dbb4e67nhpr"]
+
+[ext_resource type="Script" path="res://scenes/common/camera/goal_cam.gd" id="1_6thdh"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_tgmbx"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_ap6bf"]
+
+[sub_resource type="Resource" id="Resource_vltpv"]
+script = ExtResource("2_ap6bf")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="GoalCam" type="Node2D"]
+position = Vector2(1727, 187)
+script = ExtResource("1_6thdh")
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("1_tgmbx")
+snap_to_pixel = true
+tween_resource = SubResource("Resource_vltpv")
+tween_on_load = false
+draw_limits = true

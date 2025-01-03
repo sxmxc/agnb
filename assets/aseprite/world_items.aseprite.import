@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://bvbje1stiby0y"
+path="res://.godot/imported/world_items.aseprite-9e8d2cac4d40078b2a4dac36f70c5d6a.res"
+
+[deps]
+
+source_file="res://assets/aseprite/world_items.aseprite"
+dest_files=["res://.godot/imported/world_items.aseprite-9e8d2cac4d40078b2a4dac36f70c5d6a.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

@@ -16,5 +16,5 @@ func _ready():
 		Signal(self, sig.name).connect(_on_signal_call.bind(sig.name))
 	pass
 	
-func _on_signal_call(args = null, sig = null):
+func _on_signal_call(_args = null, sig = null):
 	print("Signal %s called" % str(sig))

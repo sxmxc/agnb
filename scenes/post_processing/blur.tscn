@@ -4,7 +4,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b3oi8"]
 shader = ExtResource("1_sxeel")
-shader_parameter/strength = null
+shader_parameter/strength = 2
 
 [node name="Blur" type="CanvasLayer"]
 

@@ -2,6 +2,7 @@ class_name PauseMenu extends Control
 
 @export var is_paused : BoolReference
 @export var is_game_over : BoolReference
+@export var is_level_over : BoolReference
 
 func _enter_tree():
 	is_paused.on_value_changed.connect(_on_pause_changed)
@@ -14,7 +15,7 @@ func _ready():
 
 func _input(event : InputEvent):
 	if event.is_action_pressed("ui_cancel"):
-		if is_game_over.value:
+		if is_game_over.value or is_level_over.value:
 			return
 		is_paused.value = !get_tree().paused
 
@@ -31,6 +32,6 @@ func pause():
 	
 func resume():
 	if GameManager.current_sidecar:
-		SoundManager.play_music(GameManager.current_sidecar.world_theme_song)
+		SoundManager.play_music_queue(GameManager.current_sidecar.world_song_queue)
 	get_tree().paused = false
 	visible = false

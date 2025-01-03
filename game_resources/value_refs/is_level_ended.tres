@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BoolReference" load_steps=2 format=3 uid="uid://b7e4bh0bk7uky"]
+
+[ext_resource type="Script" path="res://scripts/resources/references/bool_reference.gd" id="1_hndtl"]
+
+[resource]
+script = ExtResource("1_hndtl")
+_value = false

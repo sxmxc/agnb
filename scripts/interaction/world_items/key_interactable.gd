@@ -26,7 +26,7 @@ func _ready():
 func _process(delta):
 	if pickup_target:
 		var dir : Vector2 = sprite_2d.global_position.direction_to(pickup_target.global_position)
-		sprite_2d.global_position += dir * 300 * delta
+		sprite_2d.global_position += dir * 1000 * delta
 		if sprite_2d.global_position.distance_to(pickup_target.global_position) <= 5:
 			_on_picked_up()
 
@@ -34,10 +34,7 @@ func _on_area_entered(area : Area2D):
 	if area is Interactor:
 		pickup_target = area
 	
-func _on_area_exited(area : Area2D):
-	return
-
-func _on_interact(interactor : Interactor):
+func _on_area_exited(_area : Area2D):
 	return
 
 func _on_picked_up():

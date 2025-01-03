@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0godrbeuaix0"]
+
+[ext_resource type="Script" path="res://scripts/camera/screensize_viewport.gd" id="1_p3grw"]
+[ext_resource type="Script" path="res://scripts/camera/camera_trigger_targeter.gd" id="2_46avs"]
+[ext_resource type="Resource" uid="uid://dxvswfxk2kwac" path="res://game_resources/events/camera_trigger_entered.tres" id="3_p32si"]
+
+[node name="minimap_viewport" type="SubViewport"]
+process_mode = 3
+disable_3d = true
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+audio_listener_enable_2d = true
+gui_disable_input = true
+canvas_cull_mask = 4293918722
+size = Vector2i(320, 180)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+script = ExtResource("1_p3grw")
+
+[node name="camera_minimap" type="Camera2D" parent="."]
+z_as_relative = false
+zoom = Vector2(0.5, 0.5)
+
+[node name="camera_trigger_targeter" type="Node" parent="camera_minimap" node_paths=PackedStringArray("camera")]
+script = ExtResource("2_46avs")
+camera = NodePath("..")
+area_entered_event = ExtResource("3_p32si")

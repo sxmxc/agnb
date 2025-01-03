@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://bg6db2rby0amg"
+path="res://.godot/imported/door_v1.aseprite-e1a2a8add45cbacc14565fdbff17be05.res"
+
+[deps]
+
+source_file="res://assets/aseprite/door_v1.aseprite"
+dest_files=["res://.godot/imported/door_v1.aseprite-e1a2a8add45cbacc14565fdbff17be05.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false
