@@ -1,4 +1,4 @@
-extends "res://addons/AutoExportVersion/VersionProvider.gd"
+extends VersionProvider
 
 func get_version(features: PackedStringArray, is_debug: bool, path: String, flags: int) -> String:
 	var version: String = ""

@@ -7,6 +7,11 @@ var config = {
 	"main_menu_scene": preload("res://scenes/menus/main_menu.tscn")
 }
 
+var world_dict = {
+	1: preload("res://game_resources/world_refs/world_1.tres"),
+	2: preload("res://game_resources/world_refs/world_2.tres")
+}
+
 var audio_dict = {
 	"main_theme_song" :  preload("res://assets/audio/music/Bone Yard Waltz - Loopable.ogg"),
 	"game_over_song": preload("res://assets/audio/music/Dungeon Theme.mp3"),

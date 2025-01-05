@@ -1,4 +1,5 @@
 extends RefCounted
+class_name VersionProvider
 
 ## Change the code of this method to return a String that will identify your version.           [br]
 ## You can use the arguments to customize your version, for example based on selected platform. [br]

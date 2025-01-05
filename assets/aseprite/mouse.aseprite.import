@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://xja5xsolb2yu"
+path="res://.godot/imported/mouse.aseprite-470182af38682dda405812544a62d1f9.res"
+
+[deps]
+
+source_file="res://assets/aseprite/mouse.aseprite"
+dest_files=["res://.godot/imported/mouse.aseprite-470182af38682dda405812544a62d1f9.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

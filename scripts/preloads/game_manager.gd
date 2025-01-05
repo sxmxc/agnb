@@ -20,8 +20,12 @@ extends Node
 	set(value):
 		num_coins = value
 		EventBus.player_coins_updated.emit(num_coins)
+		
+@export var current_world_idx := 1
 
 var current_sidecar: WorldSidecar = null
+
+
 
 func reset_player():
 	held_keys = 0
@@ -40,6 +44,7 @@ func pan_to_active_cam():
 
 func set_level(sidecar: WorldSidecar):
 	current_sidecar = sidecar
+	current_world_idx = sidecar.world_idx
 	current_sidecar.tree_exited.connect(func(): 
 		current_sidecar = null)
 	

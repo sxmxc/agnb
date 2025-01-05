@@ -1,9 +1,11 @@
 extends Label
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	text = "v%s" % ProjectSettings.get_setting("application/config/version")
+	var vp := VersionProvider.new()
+	text = "v: %s\nb: %s" % [ProjectSettings.get_setting("application/config/version"), vp.get_git_commit_hash(5)]
 	pass # Replace with function body.
 
 

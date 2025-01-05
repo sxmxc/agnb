@@ -4,7 +4,7 @@ extends Control
 @onready var life_amount = %LifeAmount
 @onready var coin_amount = %CoinAmount
 @onready var level_label = %LevelLabel
-@onready var level_timer = %LevelTimer
+@onready var level_timer : LevelTimer = %LevelTimer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,6 +34,9 @@ func resume_level_timer():
 
 func stop_level_timer():
 	level_timer.stop()
+
+func pause_level_timer():
+	level_timer.pause()
 	
 func _on_lives_update(amount):
 	life_amount.text = "%s" % amount

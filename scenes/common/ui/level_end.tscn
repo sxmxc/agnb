@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxt126iidliwk"]
+[gd_scene load_steps=9 format=3 uid="uid://bxt126iidliwk"]
 
 [ext_resource type="Theme" uid="uid://byds11vsd6ber" path="res://themes/pixelart/pixelart.tres" id="1_qwkhk"]
 [ext_resource type="Script" path="res://scenes/common/ui/level_end.gd" id="2_64o6q"]
 [ext_resource type="FontFile" uid="uid://gw131jxas0sc" path="res://fonts/Peaberry/PeaberryBase.ttf" id="2_uh7jj"]
 [ext_resource type="AudioStream" uid="uid://7qmbqpxf572t" path="res://assets/audio/music/mushroom dance_0.ogg" id="3_vgko1"]
+[ext_resource type="Shader" path="res://shaders/post_processing/blur_postprocess.gdshader" id="4_5csih"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iocqq"]
+shader = ExtResource("4_5csih")
+shader_parameter/strength = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_v6bss"]
 font = ExtResource("2_uh7jj")
@@ -25,6 +30,16 @@ script = ExtResource("2_64o6q")
 victory_song = ExtResource("3_vgko1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.152941, 0.152941, 0.266667, 0.87451)
+
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_iocqq")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,7 +164,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "RETRY"
 
-[node name="Button" type="Button" parent="AspectRatioContainer/MarginContainer/VBoxContainer/HBoxButtons"]
+[node name="ContinueButton" type="Button" parent="AspectRatioContainer/MarginContainer/VBoxContainer/HBoxButtons"]
 layout_mode = 2
 size_flags_vertical = 4
 text = "CONTINUE"
+
+[connection signal="pressed" from="AspectRatioContainer/MarginContainer/VBoxContainer/HBoxButtons/ContinueButton" to="." method="_on_continue_button_pressed"]

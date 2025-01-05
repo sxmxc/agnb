@@ -8,13 +8,14 @@ func _ready():
 	
 func _on_area_entered(area : Area2D):
 	if area is Interactor:
-		area.interactable_in_range = true
+		area.indicator.show()
 		area.on_interact.connect(_on_interact.bind(area))
 	
 func _on_area_exited(area : Area2D):
 	if area is Interactor:
-		area.interactable_in_range = false
+		area.indicator.hide()
 		area.on_interact.disconnect(_on_interact)
 
 func _on_interact(interactor : Interactor):
+	interactor.indicator.hide()
 	on_interacted.emit(interactor)

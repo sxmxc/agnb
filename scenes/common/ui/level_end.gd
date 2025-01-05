@@ -80,3 +80,16 @@ func calculate_time_score() -> int:
 		return 0
 	# Convert remaining time to points (1 point per min)
 	return int(remaining_time / 60)
+
+
+func _on_continue_button_pressed():
+	var next_scene
+	if DataManager.world_dict.has(GameManager.current_world_idx + 1):
+		next_scene = load(DataManager.world_dict[GameManager.current_world_idx + 1].scene_path)
+	else:
+		next_scene = load(DataManager.world_dict[GameManager.current_world_idx])
+	SceneTransitionManager.change_scene_with_transition(
+		next_scene,
+		DataManager.config["transition_scene"]
+	)
+	pass # Replace with function body.

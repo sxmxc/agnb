@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WorldReference" load_steps=2 format=3 uid="uid://drs8cmbqn42j0"]
+
+[ext_resource type="Script" path="res://scripts/resources/references/world_reference.gd" id="1_pnet5"]
+
+[resource]
+script = ExtResource("1_pnet5")
+world_iid = "world-1"
+scene_path = "res://scenes/worlds/world_1.tscn"

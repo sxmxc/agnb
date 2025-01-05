@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://chee17ae0u5op"]
+[gd_scene load_steps=49 format=3 uid="uid://chee17ae0u5op"]
 
 [ext_resource type="Theme" uid="uid://byds11vsd6ber" path="res://themes/pixelart/pixelart.tres" id="1_0bcbq"]
 [ext_resource type="Script" path="res://scripts/ui/main_menui_control.gd" id="1_7gw0o"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dgfwbbb5te0rm" path="res://scenes/scene_transitions/circle_transition.tscn" id="3_lqaap"]
 [ext_resource type="Texture2D" uid="uid://8l4kraegpb8d" path="res://assets/aseprite/Stars.png" id="4_2d32d"]
 [ext_resource type="Script" path="res://scripts/ui/settings_control.gd" id="4_mjs4o"]
-[ext_resource type="PackedScene" uid="uid://cqcl1t3tfmgxr" path="res://scenes/worlds/world_1.tscn" id="5_blcnv"]
 [ext_resource type="Texture2D" uid="uid://c4n1oksn0l5yb" path="res://assets/aseprite/Mountains.png" id="5_wxrq0"]
 [ext_resource type="Script" path="res://scripts/ui/viewport_container.gd" id="6_8dq4u"]
 [ext_resource type="Texture2D" uid="uid://bjd2q4bdwi8i5" path="res://assets/aseprite/skull.png" id="8_om0o8"]
@@ -894,6 +893,12 @@ graph_offset = Vector2(23, 116)
 [sub_resource type="Environment" id="Environment_3grkq"]
 background_mode = 3
 tonemap_mode = 3
+fog_mode = 1
+fog_light_color = Color(0.608, 0.189086, 0, 1)
+fog_light_energy = 4.02
+fog_density = 1.0
+fog_depth_begin = 0.0
+fog_depth_end = 916.3
 
 [sub_resource type="Curve2D" id="Curve2D_exmcj"]
 _data = {
@@ -1104,7 +1109,6 @@ script = ExtResource("1_7gw0o")
 start_button = NodePath("../MarginContainer/VBoxContainer/VBoxContainer/start_button")
 settings_button = NodePath("../MarginContainer/VBoxContainer/VBoxContainer/settings_button")
 exit_button = NodePath("../MarginContainer/VBoxContainer/VBoxContainer/exit_button")
-start_scene_path = ExtResource("5_blcnv")
 transition_path = ExtResource("3_lqaap")
 
 [node name="MarginContainer" type="MarginContainer" parent="Main Menu"]
@@ -1145,6 +1149,8 @@ text = "Start"
 
 [node name="load_button" parent="Main Menu/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("9_ijoqn")]
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 1
 text = "Continue"
 
 [node name="settings_button" type="Button" parent="Main Menu/MarginContainer/VBoxContainer/VBoxContainer"]

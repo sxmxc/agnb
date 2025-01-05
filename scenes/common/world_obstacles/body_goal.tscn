@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://lla1605wjeq4"]
 
-[ext_resource type="Script" path="res://scripts/interaction/dialog/dialogue_interactable.gd" id="1_h6nip"]
+[ext_resource type="Script" path="res://scripts/interaction/events/event_interactable.gd" id="1_h6nip"]
 [ext_resource type="Resource" uid="uid://8gatgf2uan6p" path="res://game_resources/events/level_end.tres" id="2_dg0rw"]
 [ext_resource type="Texture2D" uid="uid://ctf8j0kshmo2n" path="res://assets/aseprite/body_1.png" id="4_4ow3o"]
 

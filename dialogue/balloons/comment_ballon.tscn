@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnuaoaysg66t6"]
+
+[ext_resource type="Script" path="res://dialogue/balloons/comment_ballon.gd" id="1_taw04"]
+[ext_resource type="Theme" uid="uid://byds11vsd6ber" path="res://themes/pixelart/pixelart.tres" id="2_s4a48"]
+[ext_resource type="Texture2D" uid="uid://fm78v1mpxgae" path="res://assets/aseprite/speech_bubble.png" id="3_bemr8"]
+[ext_resource type="FontFile" uid="uid://cbinyb8ofhnb0" path="res://fonts/8-bit-hud.ttf" id="4_0aett"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="5_e4x14"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="6_pdaxi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxecx"]
+
+[node name="CommentBallon" type="PanelContainer"]
+z_index = 1
+offset_left = -28.0
+offset_top = -23.0
+offset_right = 67.0
+grow_vertical = 0
+pivot_offset = Vector2(28, 23)
+theme = ExtResource("2_s4a48")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mxecx")
+script = ExtResource("1_taw04")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_s4a48")
+texture = ExtResource("3_bemr8")
+region_rect = Rect2(0, 0, 64, 32.0412)
+patch_margin_left = 2
+patch_margin_top = 3
+patch_margin_right = 2
+patch_margin_bottom = 12
+
+[node name="Responses" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Responses" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+script = ExtResource("6_pdaxi")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Responses/ResponsesMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Response example"
+
+[node name="Balloon" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 12
+
+[node name="DialogueLabel" type="RichTextLabel" parent="Balloon"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0.152941, 0.152941, 0.266667, 1)
+theme_override_fonts/normal_font = ExtResource("4_0aett")
+theme_override_fonts/italics_font = ExtResource("4_0aett")
+theme_override_font_sizes/italics_font_size = 5
+theme_override_font_sizes/normal_font_size = 5
+bbcode_enabled = true
+text = "Squeak Squeak!
+"
+fit_content = true
+script = ExtResource("5_e4x14")
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

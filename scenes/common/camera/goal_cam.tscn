@@ -10,8 +10,7 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[node name="GoalCam" type="Node2D"]
-position = Vector2(1727, 187)
+[node name="GoalCam" type="Node2D" groups=["GoalCam"]]
 script = ExtResource("1_6thdh")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]

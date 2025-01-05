@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://do35y5bggtavd"]
+
+[ext_resource type="Script" path="res://scenes/dev/test_char_body_2d.gd" id="1_hhtlc"]
+[ext_resource type="Texture2D" uid="uid://bauc0jiyyjlig" path="res://assets/aseprite/skull_icon_16.png" id="2_0wpyk"]
+
+[node name="TestCharBody2D" type="CharacterBody2D"]
+position = Vector2(191, 561)
+collision_mask = 12
+platform_wall_layers = 8
+script = ExtResource("1_hhtlc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0wpyk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -7, -2, -6, -5, -6, -5, -5, -6, -5, -6, -4, -7, -4, -7, -3, -8, -3, -8, 1, -7, 1, -7, 2, -6, 2, -6, 3, -4, 3, -4, 7, -3, 7, -3, 8, 3, 8, 3, 7, 4, 7, 4, 3, 6, 3, 6, 2, 7, 2, 7, 1, 8, 1, 8, -3, 7, -3, 7, -4, 6, -4, 6, -5, 5, -5, 5, -6, 2, -6, 2, -7)

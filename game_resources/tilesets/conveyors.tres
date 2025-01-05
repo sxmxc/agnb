@@ -1,0 +1,74 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://dmd5hx14xhy1x"]
+
+[ext_resource type="Texture2D" uid="uid://dpp8xd751lo" path="res://assets/aseprite/world_items.png" id="1_6m0ov"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5kc0q"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sbr6l"]
+texture = ExtResource("1_6m0ov")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(20, 0)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.125, 8, 4.875, 8, 8, -8, 8)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+0:0/0/terrains_peering_bit/right_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(20, 0)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.125, 8, 4.875, 8, 8, -8, 8)
+1:0/0/physics_layer_0/polygon_0/one_way = true
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(20, 0)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.125, 8, 4.875, 8, 8, -8, 8)
+2:0/0/physics_layer_0/polygon_0/one_way = true
+2:0/0/terrains_peering_bit/left_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(20, 0)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.125, 8, 4.875, 8, 8, -8, 8)
+3:0/0/physics_layer_0/polygon_0/one_way = true
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 1
+0:1/0/physics_layer_0/linear_velocity = Vector2(-20, 0)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.125, 8, 4.875, 8, 8, -8, 8)
+0:1/0/physics_layer_0/polygon_0/one_way = true
+0:1/0/terrains_peering_bit/right_side = 1
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 1
+1:1/0/physics_layer_0/linear_velocity = Vector2(-20, 0)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.125, 8, 4.875, 8, 8, -8, 8)
+1:1/0/physics_layer_0/polygon_0/one_way = true
+1:1/0/terrains_peering_bit/right_side = 1
+1:1/0/terrains_peering_bit/left_side = 1
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 1
+2:1/0/physics_layer_0/linear_velocity = Vector2(-20, 0)
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.125, 8, 4.875, 8, 8, -8, 8)
+2:1/0/physics_layer_0/polygon_0/one_way = true
+2:1/0/terrains_peering_bit/left_side = 1
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 1
+3:1/0/physics_layer_0/linear_velocity = Vector2(-20, 0)
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.125, 8, 4.875, 8, 8, -8, 8)
+3:1/0/physics_layer_0/polygon_0/one_way = true
+
+[resource]
+physics_layer_0/collision_layer = 24
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_5kc0q")
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Conveyor_Right"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Conveyor_Left"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_sbr6l")

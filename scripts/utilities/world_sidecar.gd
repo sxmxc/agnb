@@ -1,10 +1,13 @@
 extends Node
 class_name WorldSidecar
 
+##TODO Move this logic into World.gd class
+
 const RIGID_BODY_CHARACTER = preload("res://scenes/common/rigid_body_character.tscn")
-const PLAYER_V_2 = preload("res://scenes/common/player_v2.tscn")
+const PLAYER= preload("res://scenes/common/player.tscn")
 
 @export var world_name: String
+@export var world_idx: int
 @export var world_theme_song: AudioStream
 @export var world_song_queue: AudioStreamPlaylist
 @export var has_intro_played : bool = false
@@ -35,9 +38,11 @@ func _ready():
 		SoundManager.play_music_queue(world_song_queue)
 	elif world_theme_song:
 		SoundManager.play_music(world_theme_song)
-	GameManager.set_level(self)
+	if !goal_camera:
+		goal_camera = get_tree().get_first_node_in_group("GoalCam")
 	if !current_checkpoint:
 		current_checkpoint = get_tree().get_first_node_in_group("Checkpoint")
+	GameManager.set_level(self)
 	_current_player = spawn_player()
 	player_hud.setup_ui()
 	EventBus.player_died.connect(_on_player_death)
@@ -88,7 +93,7 @@ func _on_checkpoint_reached(which: PlayerCheckpoint):
 	current_checkpoint = which
 
 func spawn_player() -> Player:
-	var new_player = PLAYER_V_2.instantiate()
+	var new_player = PLAYER.instantiate()
 	new_player.name = "Player"
 	new_player.global_position = current_checkpoint.global_position
 	get_parent().call_deferred("add_child", new_player)

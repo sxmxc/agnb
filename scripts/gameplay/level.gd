@@ -8,15 +8,15 @@ extends Node2D
 @export var neighbours: Array[Level]
 @export var bg_color: Color
 
-@onready var blocks_auto :TileMapLayer= $Blocks_Auto
+@onready var blocks : TileMapLayer= $Blocks
 @onready var camera_trigger : CameraTrigger
 
 func _ready() -> void:
-	size = blocks_auto.get_used_rect().size * 16
+	size = blocks.get_used_rect().size * 16
 	for child in get_children():
 		if child is CameraTrigger:
 			camera_trigger = child
-			camera_trigger.setup_trigger(blocks_auto)
+			camera_trigger.setup_trigger(blocks)
 	queue_redraw()
 
 func _draw() -> void:

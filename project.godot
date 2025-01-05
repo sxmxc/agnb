@@ -15,7 +15,7 @@ AutoExportVersion/version_config_file="res://config/auto_export_version_config_f
 [application]
 
 config/name="aintgotnobody"
-config/version="0.0.0.1"
+config/version="0.0.1.1"
 config/tags=PackedStringArray("gd4")
 run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
@@ -61,6 +61,8 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 Saveable=""
 Moveable=""
 Checkpoint=""
+GoalCam=""
+Player=""
 
 [input]
 
@@ -122,11 +124,12 @@ fine_tune_left={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/intro.dialogue", "res://dialogue/not_my_body.dialogue", "res://dialogue/locked_door.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/intro.dialogue", "res://dialogue/not_my_body.dialogue", "res://dialogue/locked_door.dialogue", "res://dialogue/mouse.dialogue")
 
 [layer_names]
 
 2d_render/layer_2="Minimap"
+2d_render/layer_3="ParticleCollision"
 2d_physics/layer_1="Default"
 2d_physics/layer_3="Obstacle Collisions"
 2d_physics/layer_4="World Collisions"
@@ -134,7 +137,6 @@ locale/translations_pot_files=PackedStringArray("res://dialogue/intro.dialogue",
 
 [physics]
 
-2d/run_on_separate_thread=true
 common/physics_jitter_fix=0.0
 2d/physics_engine="GodotPhysics2D"
 common/physics_interpolation=true

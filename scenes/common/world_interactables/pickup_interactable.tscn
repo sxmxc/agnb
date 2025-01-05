@@ -22,7 +22,7 @@ radius = 47.2652
 atlas = ExtResource("2_t81ex")
 region = Rect2(2, 5, 11, 6)
 
-[node name="PickupInteractable" type="Area2D"]
+[node name="PickupInteractable" type="Area2D" groups=["Saveable"]]
 script = ExtResource("1_f5iqv")
 coin_sprite = SubResource("AtlasTexture_cl8dy")
 key_sprite = SubResource("AtlasTexture_vdodm")

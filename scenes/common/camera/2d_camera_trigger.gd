@@ -13,7 +13,6 @@ func _ready() -> void:
 		collision_shape_2d.queue_free()
 	body_entered.connect(_entered_area)
 	body_exited.connect(_exited_area)
-	#area_pcam.set_follow_target(get_tree().get_nodes_in_group("player")[0])
 
 func setup_trigger(tile_map: TileMapLayer):
 	collision_shape_2d = CollisionShape2D.new()
@@ -21,16 +20,18 @@ func setup_trigger(tile_map: TileMapLayer):
 	var shape = RectangleShape2D.new()
 	shape.size = tile_map.get_used_rect().size * tile_size
 	collision_shape_2d.shape = shape
+	collision_shape_2d.position = Vector2((shape.size.x + tile_size.x) / 2, (shape.size.y - tile_size.y) / 2) 
 	add_child(collision_shape_2d)
-	collision_shape_2d.set_deferred("position", Vector2((shape.size.x + tile_size.x) / 2, (shape.size.y - tile_size.y) / 2))
 	area_pcam.set_limit_target(collision_shape_2d.get_path())
-	area_pcam.set_follow_target(null) 
+	area_pcam.set_follow_target(null)
+	#area_pcam.set_follow_target(get_tree().get_nodes_in_group("Player")[0])
 
 func _entered_area(body) -> void:
 	if body is Player:
 		area_enter.trigger(self)
-		area_pcam.set_priority(20)
+		area_pcam.follow_mode = PhantomCamera2D.FollowMode.SIMPLE
 		area_pcam.set_follow_target(body)
+		area_pcam.set_priority(20)
 		
 		
 

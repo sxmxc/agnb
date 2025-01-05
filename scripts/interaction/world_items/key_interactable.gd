@@ -1,13 +1,15 @@
 extends Interactable
 class_name PickupInteractable
 
-@onready var sprite_2d = $Sprite2D
+
 
 @export var pickup_type : DataManager.PickupType
-
 @export var coin_sprite : Texture2D
 @export var key_sprite : Texture2D
 @export var life_sprite : Texture2D
+@export var has_been_collected: bool = false
+
+@onready var sprite_2d = $Sprite2D
 
 var pickup_target: Interactor = null
 
@@ -17,6 +19,9 @@ func _ready():
 		DataManager.PickupType.COIN:
 			sprite_2d.texture = coin_sprite
 		DataManager.PickupType.KEY:
+			#if has_been_collected:
+				#queue_free()
+				#return
 			sprite_2d.texture = key_sprite
 		DataManager.PickupType.LIFE:
 			sprite_2d.texture = life_sprite

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://blg44wwv3ipbp"
+path="res://.godot/imported/mouse.dialogue-564c8a2d2053083f1cb4edabe6214e17.tres"
+
+[deps]
+
+source_file="res://dialogue/mouse.dialogue"
+dest_files=["res://.godot/imported/mouse.dialogue-564c8a2d2053083f1cb4edabe6214e17.tres"]
+
+[params]
+
+defaults=true

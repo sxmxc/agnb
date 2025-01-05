@@ -6,7 +6,7 @@ enum Menu { PRESS_KEY, MAIN_MENU, SETTINGS_MENU }
 @export var settings_button : Button
 @export var exit_button : Button
 
-@export var start_scene_path : PackedScene
+@export var start_scene : PackedScene
 @export var transition_path : PackedScene
 
 
@@ -15,6 +15,7 @@ enum Menu { PRESS_KEY, MAIN_MENU, SETTINGS_MENU }
 var current_menu : Menu = Menu.PRESS_KEY
 
 func _ready():
+	start_scene = load(DataManager.world_dict[1].scene_path)
 	tween_press_key()
 
 func _enter_tree():
@@ -41,7 +42,7 @@ func _input(event):
 func _on_start_button_pressed():
 	SoundManager.play_ui_sound_random_pitch(DataManager.audio_dict["ui_select"])
 	SceneTransitionManager.change_scene_with_transition(
-		start_scene_path,
+		start_scene,
 		transition_path
 	)
 
