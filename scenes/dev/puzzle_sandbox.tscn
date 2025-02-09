@@ -93,7 +93,6 @@ toggled_event = ExtResource("21_5thju")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(372, 572)
-process_callback = 0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
