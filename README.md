@@ -1,3 +1,5 @@
+[![godot-ci export](https://github.com/sxmxc/agnb/actions/workflows/godot-ci.yml/badge.svg)](https://github.com/sxmxc/agnb/actions/workflows/godot-ci.yml)
+
 # Ain'tGotNoBody
 
 Ain'tGotNoBody is a quirky 2D physics-based platformer built in Godot Engine. You play as Roger, a cheeky skull with no body, hopping through increasingly challenging levels to find his missing body—only to discover it's not his, again and again.
