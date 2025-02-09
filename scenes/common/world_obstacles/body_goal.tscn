@@ -9,6 +9,8 @@
 [node name="BodyGoal" type="Area2D"]
 visibility_layer = 3
 position = Vector2(1728, 254)
+collision_layer = 128
+collision_mask = 32
 script = ExtResource("1_h6nip")
 event = ExtResource("2_dg0rw")
 

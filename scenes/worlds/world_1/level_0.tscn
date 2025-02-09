@@ -1,26 +1,13 @@
-[gd_scene load_steps=14 format=4 uid="uid://bey3m0ornx1jg"]
+[gd_scene load_steps=10 format=4 uid="uid://bey3m0ornx1jg"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/level.gd" id="1_bkjkq"]
 [ext_resource type="TileSet" uid="uid://13li38cbutxo" path="res://game_resources/tilesets/tileset_16px.tres" id="2_qtoc7"]
 [ext_resource type="TileSet" uid="uid://dmd5hx14xhy1x" path="res://game_resources/tilesets/conveyors.tres" id="3_ogm7a"]
 [ext_resource type="PackedScene" uid="uid://bsdgbgne1pghw" path="res://scenes/common/world_interactables/door_interactable.tscn" id="3_v3sml"]
 [ext_resource type="PackedScene" uid="uid://mbienxel0ij0" path="res://scenes/common/world_interactables/pickup_interactable.tscn" id="4_3lqxa"]
-[ext_resource type="Texture2D" uid="uid://d2l1pl77g5pnn" path="res://assets/aseprite/gui-icons.png" id="5_x2ftm"]
 [ext_resource type="PackedScene" uid="uid://bi4r8i4xenumv" path="res://scenes/common/world_obstacles/player_checkpoint.tscn" id="6_m6mh2"]
 [ext_resource type="PackedScene" uid="uid://dykxmbqbfabte" path="res://scenes/common/camera/level_camera_2d.tscn" id="7_1tlma"]
 [ext_resource type="PackedScene" uid="uid://bavy12cya8ud5" path="res://scenes/common/world_interactables/tutorial_mouse.tscn" id="8_lkhq3"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cl8dy"]
-atlas = ExtResource("5_x2ftm")
-region = Rect2(2, 18, 9, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vdodm"]
-atlas = ExtResource("5_x2ftm")
-region = Rect2(2, 5, 11, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e8x62"]
-atlas = ExtResource("5_x2ftm")
-region = Rect2(18, 3, 10, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdywp"]
 size = Vector2(56, 73)
@@ -50,12 +37,6 @@ tile_set = ExtResource("3_ogm7a")
 [node name="DoorInteractable" parent="." instance=ExtResource("3_v3sml")]
 position = Vector2(632, 557)
 
-[node name="PickupInteractable2" parent="." instance=ExtResource("4_3lqxa")]
-position = Vector2(423, 452)
-coin_sprite = SubResource("AtlasTexture_cl8dy")
-key_sprite = SubResource("AtlasTexture_vdodm")
-life_sprite = SubResource("AtlasTexture_e8x62")
-
 [node name="PlayerCheckpoint3" parent="." instance=ExtResource("6_m6mh2")]
 position = Vector2(109, 630)
 
@@ -67,9 +48,31 @@ shape = SubResource("RectangleShape2D_jdywp")
 
 [node name="TutorialMouse" parent="." instance=ExtResource("8_lkhq3")]
 position = Vector2(347, 554)
+dialogue_title = "Level1Hint1"
 
 [node name="TutorialMouse2" parent="." instance=ExtResource("8_lkhq3")]
 position = Vector2(92, 634)
-dialogue_title = "Intro"
+dialogue_title = "Level1Intro"
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="PickupInteractable" parent="Pickups" instance=ExtResource("4_3lqxa")]
+position = Vector2(287, 610)
+pickup_type = 1
+
+[node name="PickupInteractable2" parent="Pickups" instance=ExtResource("4_3lqxa")]
+position = Vector2(224, 611)
+pickup_type = 1
+
+[node name="PickupInteractable3" parent="Pickups" instance=ExtResource("4_3lqxa")]
+position = Vector2(369, 551)
+pickup_type = 1
+
+[node name="PickupInteractable4" parent="Pickups" instance=ExtResource("4_3lqxa")]
+position = Vector2(424, 473)
+
+[node name="PickupInteractable5" parent="Pickups" instance=ExtResource("4_3lqxa")]
+position = Vector2(544, 559)
+pickup_type = 1
 
 [editable path="PlayerCheckpoint3"]

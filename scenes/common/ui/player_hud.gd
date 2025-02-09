@@ -20,8 +20,8 @@ func setup_ui():
 	EventBus.player_lives_updated.connect(_on_lives_update)
 	EventBus.player_keys_updated.connect(func(args): key_amount.text = "x%s" % args)
 	EventBus.player_coins_updated.connect(func(args): coin_amount.text = "x%s" % args)
-	if GameManager.current_sidecar:
-		level_label.text = GameManager.current_sidecar.world_name
+	if GameManager.current_world:
+		level_label.text = GameManager.current_world.world_name
 	key_amount.text = "x%s" % GameManager.held_keys
 	life_amount.text = "%s" % GameManager.num_lives
 	coin_amount.text = "%s" % GameManager.num_coins

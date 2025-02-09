@@ -71,7 +71,7 @@ remote_path = NodePath("../../AnimatableBody2D")
 update_rotation = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-collision_layer = 4
+collision_layer = 20
 physics_material_override = SubResource("PhysicsMaterial_tyux5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]

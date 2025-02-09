@@ -1,16 +1,34 @@
-~ Intro
+~ Level1Intro
 Mouse: Squeak, squeak!
-Mouse: Press 'A' or 'D' to tilt Roger.
+Mouse: Press 'A' or 'D' to tilt.
 Mouse: Hold 'SHIFT' while tilting to tilt with precision.
 Mouse: Press 'S' to brake.
 Mouse: Press 'W' to face up.
-Mouse: Press 'SPACE' to launch. 
+Mouse: Press 'SPACE' to launch.
+Mouse: That can either help you or hurt you.
+Mouse: But, what do I know? I'm just a mouse.
 => END
 
-~ Level1
+~ Level1Hint1
 Mouse: Squeak, squeak!
 Mouse: Pay attention to the arrows.
 Mouse: Those are conveyor belts.
 Mouse: They can either help you or hurt you.
+Mouse: But, what do I know? I'm just a mouse.
+=> END
+
+~ Level1Hint2
+Mouse: Squeak, squeak!
+Mouse: I'll let you know a secret.
+Mouse: You can launch anytime you are touching floor, or wall.
+Mouse: That can either help you or hurt you.
+Mouse: But, what do I know? I'm just a mouse.
+=> END
+
+~ Level2Intro
+Mouse: Squeak, squeak!
+Mouse: See the moving platforms?
+Mouse: I bet they can help get to places you'd never dream possible with only the power of your jaw.
+Mouse: That can either help you or hurt you.
 Mouse: But, what do I know? I'm just a mouse.
 => END

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi3mdx6kw044q"]
+
+[ext_resource type="Texture2D" uid="uid://sby3cisynq7e" path="res://assets/thirdparty/elementWood016.png" id="1_7e76g"]
+
+[node name="Obstacle" type="RigidBody2D" groups=["Moveable"]]
+position = Vector2(485, 350)
+collision_layer = 20
+collision_mask = 12
+continuous_cd = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.25)
+texture = ExtResource("1_7e76g")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.5, 0.25)
+polygon = PackedVector2Array(34.1, -70, -34.2, -70, -35, -69.5, -35, 69.4, -34.2, 70, 34.4, 70, 35, 69.1, 35, -69.5)

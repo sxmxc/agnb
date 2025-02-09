@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=4 uid="uid://cp20mmfh3smau"]
+[gd_scene load_steps=10 format=4 uid="uid://cp20mmfh3smau"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/level.gd" id="1_py2fa"]
 [ext_resource type="TileSet" uid="uid://13li38cbutxo" path="res://game_resources/tilesets/tileset_16px.tres" id="2_5viju"]
+[ext_resource type="TileSet" uid="uid://dmd5hx14xhy1x" path="res://game_resources/tilesets/conveyors.tres" id="3_nox5b"]
 [ext_resource type="PackedScene" uid="uid://lla1605wjeq4" path="res://scenes/common/world_obstacles/body_goal.tscn" id="4_7srgq"]
 [ext_resource type="PackedScene" uid="uid://bi4r8i4xenumv" path="res://scenes/common/world_obstacles/player_checkpoint.tscn" id="5_0qqki"]
 [ext_resource type="PackedScene" uid="uid://1dbb4e67nhpr" path="res://scenes/common/camera/goal_cam.tscn" id="7_stiqi"]
 [ext_resource type="PackedScene" uid="uid://dykxmbqbfabte" path="res://scenes/common/camera/level_camera_2d.tscn" id="8_jhxfn"]
+[ext_resource type="PackedScene" uid="uid://bavy12cya8ud5" path="res://scenes/common/world_interactables/tutorial_mouse.tscn" id="8_k70gb"]
+[ext_resource type="PackedScene" uid="uid://mbienxel0ij0" path="res://scenes/common/world_interactables/pickup_interactable.tscn" id="9_4r8ln"]
 
 [node name="Level_2" type="Node2D" node_paths=PackedStringArray("neighbours")]
 visibility_layer = 3
@@ -24,6 +27,10 @@ visibility_layer = 3
 tile_map_data = PackedByteArray("AAAaABQAAQAKAAQAAAAbABQAAQABAAAAAAAZABUAAQAKAAQAAAAaABUAAQAKAAUAAAAbABUAAQABAAEAAAAZABYAAQAAAAEAAAAaABYAAQABAAEAAAANABgAAQAKAAQAAAAOABgAAQABAAAAAAATABgAAQAKAAQAAAAUABgAAQABAAAAAAAVABgAAQABAAAAAAAWABgAAQAJAAQAAAAAABkAAQABAAAAAAAMABkAAQAKAAQAAAANABkAAQAKAAUAAAAOABkAAQABAAEAAAATABkAAQAAAAEAAAAUABkAAQABAAEAAAAVABkAAQABAAEAAAAWABkAAQACAAEAAAAAABoAAQABAAEAAAAMABoAAQAAAAEAAAANABoAAQABAAEAAAABABsAAQABAAEAAAACABwAAQABAAEAAAADAB0AAQABAAEAAAAEAB0AAQAJAAUAAAAFAB0AAQAJAAQAAAAEAB4AAQABAAEAAAAFAB4AAQAJAAUAAAAGAB4AAQAJAAQAAAAFAB8AAQABAAEAAAAGAB8AAQAJAAUAAAAHAB8AAQAJAAQAAAAGACAAAQABAAEAAAAHACAAAQAJAAUAAAAIACAAAQAJAAQAAAAHACEAAQABAAEAAAAIACEAAQAJAAUAAAAJACEAAQAJAAQAAAAIACIAAQABAAEAAAAJACIAAQACAAEAAAANACcAAQABAAEAAAAOACgAAQABAAEAAAA=")
 tile_set = ExtResource("2_5viju")
 
+[node name="Conveyors" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADABgAAAACAAAAAAACABgAAAABAAAAAAABABgAAAABAAAAAAAAABgAAAAAAAAAAAA=")
+tile_set = ExtResource("3_nox5b")
+
 [node name="BodyGoal" parent="." instance=ExtResource("4_7srgq")]
 position = Vector2(313, 207)
 
@@ -39,5 +46,29 @@ top_level = true
 position = Vector2(313, 207)
 follow_mode = 2
 follow_target = NodePath("../../BodyGoal")
+
+[node name="TutorialMouse" parent="." instance=ExtResource("8_k70gb")]
+position = Vector2(70, 394)
+dialogue_title = "Level1Hint2"
+
+[node name="PickupInteractable" parent="." instance=ExtResource("9_4r8ln")]
+position = Vector2(244, 351)
+pickup_type = 1
+
+[node name="PickupInteractable2" parent="." instance=ExtResource("9_4r8ln")]
+position = Vector2(334, 352)
+pickup_type = 1
+
+[node name="PickupInteractable3" parent="." instance=ExtResource("9_4r8ln")]
+position = Vector2(443, 294)
+pickup_type = 1
+
+[node name="PickupInteractable4" parent="." instance=ExtResource("9_4r8ln")]
+position = Vector2(288, 570)
+pickup_type = 2
+
+[node name="PickupInteractable5" parent="." instance=ExtResource("9_4r8ln")]
+position = Vector2(129, 478)
+pickup_type = 2
 
 [editable path="GoalCam"]

@@ -8,11 +8,13 @@ signal on_interact
 @onready var indicator = $Indicator
 
 func _ready():
+	await get_parent().ready
+	global_position = get_parent().global_position
 	indicator.hide()
 
 func _physics_process(_delta):
+	global_position = get_parent().global_position
 	if get_parent().control_locked:
 		return
-	global_position = get_parent().global_position
 	if Input.is_action_just_pressed(action):
 		on_interact.emit()

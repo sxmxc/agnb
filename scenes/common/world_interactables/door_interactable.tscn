@@ -19,6 +19,8 @@ region = Rect2(17, 0, 25, 32)
 
 [node name="DoorInteractable" type="Area2D" node_paths=PackedStringArray("door") groups=["Saveable"]]
 position = Vector2(2, -6)
+collision_layer = 64
+collision_mask = 32
 script = ExtResource("1_jxebt")
 door = NodePath("Door")
 balloon_scene = ExtResource("2_t01nj")

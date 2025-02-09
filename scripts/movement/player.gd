@@ -38,7 +38,7 @@ func _physics_process(delta):
 		if trajectory_line.get_point_count() > 0:
 			trajectory_line.clear_points()
 		return
-		
+	
 	_apply_rotation(delta)
 	_check_floor()
 	
@@ -51,7 +51,8 @@ func _physics_process(delta):
 	braking_requested = Input.is_action_pressed("move_down")
 	
 	if on_moving_platform:
-		velocity.x = lerpf(velocity.x, 0, .1)
+		_apply_gravity(delta)
+		velocity.x = lerpf(velocity.x, 0, 5 * delta)
 		move_and_slide()
 		apply_floor_snap()
 	else:
@@ -108,10 +109,10 @@ func _apply_jump():
 func _apply_physics(delta):
 	_apply_gravity(delta)
 	
-	if is_grounded:
-		if on_moving_platform:
-			# Adjust player velocity based on the platform
-			apply_floor_snap()
+	#if is_grounded:
+		#if on_moving_platform:
+			## Adjust player velocity based on the platform
+			#apply_floor_snap()
 
 	if braking_requested:
 		velocity = velocity.lerp(Vector2.ZERO, brake_factor * delta)
