@@ -15,7 +15,7 @@ AutoExportVersion/version_config_file="res://config/auto_export_version_config_f
 [application]
 
 config/name="aintgotnobody"
-config/version="0.0.1.1"
+config/version="0.0.1.2"
 config/tags=PackedStringArray("gd4")
 run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
@@ -38,7 +38,6 @@ CameraShakeManager="*res://scenes/preloads/camera_shake_manager.tscn"
 EventBus="*res://scripts/preloads/event_bus.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-Panku="*res://addons/panku_console/console.tscn"
 
 [dialogue_manager]
 
@@ -55,7 +54,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/AutoExportVersion/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/panku_console/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/AutoExportVersion/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
 
 [global_group]
 

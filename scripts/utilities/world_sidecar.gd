@@ -43,7 +43,7 @@ func _ready():
 		goal_camera = get_tree().get_first_node_in_group("GoalCam")
 	if !current_checkpoint:
 		current_checkpoint = get_tree().get_first_node_in_group("Checkpoint")
-	GameManager.set_level(self)
+	GameManager.set_level(self.get_parent())
 	_current_player = spawn_player()
 	player_hud.setup_ui()
 	EventBus.player_died.connect(_on_player_death)

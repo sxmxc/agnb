@@ -31,7 +31,7 @@ func pause():
 	visible = true
 	
 func resume():
-	if GameManager.current_sidecar:
-		SoundManager.play_music_queue(GameManager.current_sidecar.world_song_queue)
+	if GameManager.current_world:
+		SoundManager.play_music_queue(GameManager.current_world.world_song_queue)
 	get_tree().paused = false
 	visible = false
