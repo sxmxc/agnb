@@ -1,4 +1,10 @@
+![GitHub Tag](https://img.shields.io/github/v/tag/sxmxc/agnb)
+
+![Static Badge](https://img.shields.io/badge/Godot_version-4.3-blue)
+
 [![godot-ci export](https://github.com/sxmxc/agnb/actions/workflows/godot-ci.yml/badge.svg)](https://github.com/sxmxc/agnb/actions/workflows/godot-ci.yml)
+
+[![CodeFactor](https://www.codefactor.io/repository/github/sxmxc/agnb/badge)](https://www.codefactor.io/repository/github/sxmxc/agnb)
 
 # Ain'tGotNoBody
 
