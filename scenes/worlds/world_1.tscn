@@ -299,14 +299,12 @@ visible = false
 
 [node name="MainCamera" type="Camera2D" parent="."]
 ignore_rotation = false
-process_callback = 0
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera"]
 process_priority = 300
 process_physics_priority = 300
 physics_interpolation_mode = 1
 script = ExtResource("22_qgnv5")
-interpolation_mode = 2
 
 [node name="DebugCam" type="Node2D" parent="."]
 position = Vector2(958, -12)

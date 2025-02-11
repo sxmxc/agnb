@@ -37,7 +37,6 @@ func _init() -> void:
 	child_order_changed.connect(_find_level_children)
 	
 func _ready():
-	await get_parent().ready
 	if world_song_queue:
 		SoundManager.play_music_queue(world_song_queue)
 	elif world_theme_song:

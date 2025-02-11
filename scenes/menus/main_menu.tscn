@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://chee17ae0u5op"]
+[gd_scene load_steps=50 format=3 uid="uid://chee17ae0u5op"]
 
 [ext_resource type="Theme" uid="uid://byds11vsd6ber" path="res://themes/pixelart/pixelart.tres" id="1_0bcbq"]
 [ext_resource type="Script" path="res://scripts/ui/main_menui_control.gd" id="1_7gw0o"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4n1oksn0l5yb" path="res://assets/aseprite/Mountains.png" id="5_wxrq0"]
 [ext_resource type="Script" path="res://scripts/ui/viewport_container.gd" id="6_8dq4u"]
 [ext_resource type="Texture2D" uid="uid://bjd2q4bdwi8i5" path="res://assets/aseprite/skull.png" id="8_om0o8"]
+[ext_resource type="PackedScene" uid="uid://cqcl1t3tfmgxr" path="res://scenes/worlds/world_1.tscn" id="9_05yrt"]
 [ext_resource type="PackedScene" uid="uid://dj23d3rfwfmvs" path="res://scenes/common/ui/load_button.tscn" id="9_ijoqn"]
 [ext_resource type="Resource" uid="uid://bxr87pwrckedg" path="res://game_resources/settings/default.tres" id="10_2cibs"]
 [ext_resource type="Script" path="res://scripts/ui/skull_launcher.gd" id="11_ov5iy"]
@@ -1096,8 +1097,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 640.0
-offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_0bcbq")
@@ -1109,6 +1108,7 @@ script = ExtResource("1_7gw0o")
 start_button = NodePath("../MarginContainer/VBoxContainer/VBoxContainer/start_button")
 settings_button = NodePath("../MarginContainer/VBoxContainer/VBoxContainer/settings_button")
 exit_button = NodePath("../MarginContainer/VBoxContainer/VBoxContainer/exit_button")
+start_scene = ExtResource("9_05yrt")
 transition_path = ExtResource("3_lqaap")
 
 [node name="MarginContainer" type="MarginContainer" parent="Main Menu"]
