@@ -1,8 +1,8 @@
 # Backlog
 
 ## P0 — Ship Blockers
-- **P0-01: Fix sidecar null usage**  
-  - Acceptance: `GameManager.current_sidecar` is set (or references removed) so `level_end.gd` and `speech_interactable.gd` no longer crash when accessing HUD/timer.  
+- **P0-01: Fix sidecar null usage** *(DONE — GameManager now tracks the active world as `current_sidecar`, and HUD/timer lookups are guarded.)*
+  - Acceptance: `GameManager.current_sidecar` is set (or references removed) so `level_end.gd` and `speech_interactable.gd` no longer crash when accessing HUD/timer.
   - Touchpoints: `scripts/gameplay/world.gd` or `scripts/utilities/world_sidecar.gd`, `scenes/common/ui/level_end.gd`, `scripts/interaction/dialog/speech_interactable.gd`.
 - **P0-02: Add level-end goal to World 2**  
   - Acceptance: A body goal exists in World 2, triggers `level_end` dialogue/UI, and Continue advances without errors.  
