@@ -17,3 +17,8 @@
 - Documented mechanics: rotation-based grounded launch, trajectory preview simulation, checkpoints/death/life system, doors/keys/pickups, moving platforms/conveyors, dialogue NPCs.
 - Identified critical gaps: `GameManager.current_sidecar` never set (null risk for dialogue/level-end), missing World 2 completion path, no restart control, SaveManager not wired, potential double-spawn in World 2.
 - Updated `.codex/` docs (map, feature inventory, PRD, slingshot spec, todo, release plan, known issues) to reflect current state and prioritized P0 tasks.
+
+## 2025-05-05
+- Implemented `GameManager.current_sidecar` by pointing it at the active `World` and clearing it on exit to stop HUD/timer null refs.
+- Guarded dialogue and level-end flows so they pause/resume timers only when a sidecar with a HUD exists; save/load resumes timers safely.
+- Marked P0-01 in the backlog as done to reflect the sidecar fix.

@@ -48,10 +48,11 @@ func pan_to_active_cam():
 	current_world.goal_camera.phantom_camera_2d.set_priority(0)
 
 func set_level(new_world: World):
-	current_world = new_world
-	current_world_idx = new_world.world_idx
-	current_world.tree_exited.connect(func(): 
-		current_world = null)
+        current_world = new_world
+        current_world_idx = new_world.world_idx
+        current_world.tree_exited.connect(func():
+                if current_world == new_world:
+                        current_world = null)
 	
 func pickup_item(type: DataManager.PickupType):
 	match type:
