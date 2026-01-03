@@ -1,7 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://cq0285b5b3vsl"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/world.gd" id="1_1tsci"]
-[ext_resource type="Script" path="res://scripts/utilities/world_sidecar.gd" id="2_c1u7j"]
 [ext_resource type="AudioStream" uid="uid://ccx41wl03ptt8" path="res://assets/audio/music/puzzle-1-a.mp3" id="3_x603d"]
 [ext_resource type="AudioStream" uid="uid://b8t0jjpe1bko0" path="res://assets/audio/music/puzzle-1-b.mp3" id="4_yrjhw"]
 [ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://dialogue/balloons/dialogue_panel.tscn" id="5_5ybxs"]
@@ -57,10 +56,7 @@ viewport_path = NodePath("minimap_viewport")
 visibility_layer = 3
 script = ExtResource("1_1tsci")
 iid = "world-2"
-levels = [null, null]
-
-[node name="WorldSidecar" type="Node" parent="." node_paths=PackedStringArray("goal_camera")]
-script = ExtResource("2_c1u7j")
+levels = [NodePath("Level_0"), NodePath("Level_1")]
 world_name = "World 2"
 world_idx = 2
 world_song_queue = SubResource("AudioStreamPlaylist_toklv")
@@ -71,7 +67,7 @@ end_dialogue = ExtResource("7_3lch6")
 end_dialogue_title = "Level2"
 is_paused = ExtResource("8_gyatd")
 has_completed_level = ExtResource("9_pvch2")
-goal_camera = NodePath("../GoalCam")
+goal_camera = NodePath("GoalCam")
 level_end_event = ExtResource("10_6vdlt")
 
 [node name="Background" type="Node2D" parent="."]
