@@ -10,3 +10,10 @@
 **Risks/Unknowns**: Actual gravity value not recorded; SaveManager wiring unclear; camera framing per level unverified; world_2 content needs validation.
 
 **Next Actions**: Measure gravity and sync trajectory preview (TASK-001); playtest world_1 for camera framing and soft-locks (FEAT-004, TASK-004); verify SaveManager flow (TASK-002).
+
+## 2025-03-29
+- Reviewed project entry, autoloads, and main menu flow; confirmed main scene launches world selection via `DataManager.world_dict` and `main_menui_control.gd`.
+- Indexed worlds/levels: World 1 contains three chunks with body goal only in `level_2`; World 2 has two chunks but no body goal and includes both `world.gd` and `world_sidecar.gd`.
+- Documented mechanics: rotation-based grounded launch, trajectory preview simulation, checkpoints/death/life system, doors/keys/pickups, moving platforms/conveyors, dialogue NPCs.
+- Identified critical gaps: `GameManager.current_sidecar` never set (null risk for dialogue/level-end), missing World 2 completion path, no restart control, SaveManager not wired, potential double-spawn in World 2.
+- Updated `.codex/` docs (map, feature inventory, PRD, slingshot spec, todo, release plan, known issues) to reflect current state and prioritized P0 tasks.
