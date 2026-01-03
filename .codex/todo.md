@@ -1,73 +1,55 @@
 # Backlog
 
-## High Priority Items
-- EPIC-001: Ship slingshot-first vertical slice (world_1) with reliable arc feel and level completion loop.
+## P0 — Ship Blockers
+- **P0-01: Fix sidecar null usage**  
+  - Acceptance: `GameManager.current_sidecar` is set (or references removed) so `level_end.gd` and `speech_interactable.gd` no longer crash when accessing HUD/timer.  
+  - Touchpoints: `scripts/gameplay/world.gd` or `scripts/utilities/world_sidecar.gd`, `scenes/common/ui/level_end.gd`, `scripts/interaction/dialog/speech_interactable.gd`.
+- **P0-02: Add level-end goal to World 2**  
+  - Acceptance: A body goal exists in World 2, triggers `level_end` dialogue/UI, and Continue advances without errors.  
+  - Touchpoints: `scenes/worlds/world_2/level_*.tscn`, `scenes/common/world_obstacles/body_goal.tscn`, dialogues.
+- **P0-03: Restart/unstuck control**  
+  - Acceptance: HUD or pause menu exposes Restart that respawns at last checkpoint within 2s; death zones remain as fallback.  
+  - Touchpoints: `scenes/common/ui/player_hud.tscn`, `scenes/common/ui/pause_menu.tscn`, `scripts/gameplay/world.gd`.
+- **P0-04: Trajectory/physics validation**  
+  - Acceptance: Trajectory preview matches actual flight on flat, sloped, and moving platforms (within small tolerance); document gravity value in spec; adjust math if needed.  
+  - Touchpoints: `scripts/movement/player.gd`, `scripts/gameplay/trajectory_line_rigidbody.gd`, `project.godot` gravity settings.
+- **P0-05: World 2 flow audit**  
+  - Acceptance: Confirm World 2 does not double-spawn player via `world.gd` + `world_sidecar.gd`; choose one flow and remove redundancy. Player spawns once with HUD active.  
+  - Touchpoints: `scenes/worlds/world_2.tscn`, `scripts/gameplay/world.gd`, `scripts/utilities/world_sidecar.gd`.
+- **P0-06: Locked door readability**  
+  - Acceptance: Locked doors clearly indicate required keys (HUD prompt or indicator); spending key reliably opens door and updates HUD.  
+  - Touchpoints: `scripts/interaction/world_items/door_interactable.gd`, HUD messaging.
 
-- FEAT-001: Slingshot feel polish
-  - Priority: P0 | Effort: M | Risk: Med
-  - Acceptance: Aiming rotation, trajectory preview, and applied launch arc match within small error; bounce behaves consistently on slopes; braking stops motion reliably.
-  - Touchpoints: `scripts/movement/player.gd`, `scripts/gameplay/trajectory_line_rigidbody.gd`, `project.godot` (input/physics), level TileMaps.
-  - Dependencies: None.
+## P1 — Polish & Quality
+- **P1-01: Camera readability pass**  
+  - Acceptance: Camera triggers/limits keep launch origin and landing in frame; shake intensity clamped or toggle added in settings.  
+  - Touchpoints: `scripts/camera/camera_trigger_targeter.gd`, `scripts/camera/camera_area.gd`, Phantom Camera settings, `scripts/ui/settings_control.gd` for toggle.
+- **P1-02: Save/Load decision**  
+  - Acceptance: Save/load buttons either wired to `SaveManager` and tested (keys/coins/progress restored) or hidden/disabled with tooltip.  
+  - Touchpoints: `scripts/utilities/save_manager.gd`, menu scenes, HUD if persistence enabled.
+- **P1-03: HUD clarity & onboarding**  
+  - Acceptance: Display level name/world in HUD, optional angle/force hint, and tutorial text for trajectory/brake controls.  
+  - Touchpoints: `scenes/common/ui/player_hud.tscn`, tutorial dialogue resources.
+- **P1-04: Content QA sweep**  
+  - Acceptance: Each shipped level lists checkpoints, hazards, and interactables; no blind spikes/pits; conveyors/moving platforms signposted.  
+  - Touchpoints: `scenes/worlds/world_*/level_*.tscn`, `design.md`.
 
-- FEAT-002: Fast retry & checkpoints
-  - Priority: P0 | Effort: M | Risk: Med
-  - Acceptance: Death resets within 2s to last checkpoint; add explicit restart button in HUD/pause; no soft-lock pits without death volume.
-  - Touchpoints: `scripts/gameplay/world.gd`, `scenes/common/ui/player_hud.tscn`, `scenes/common/world_obstacles/death_zone.tscn`, checkpoints.
-  - Dependencies: FEAT-001 for stable physics.
+## P2 — Nice-to-haves
+- **P2-01: Gamepad support**  
+  - Acceptance: Gamepad aims/launches with sensitivity tuning; UI navigation confirmed.  
+  - Touchpoints: `project.godot` input map, `scripts/movement/player.gd`, menu controls.
+- **P2-02: Juice & feedback**  
+  - Acceptance: Add landing/launch screen shake toggle, extra particles, and audio variety without impacting readability.  
+  - Touchpoints: `scripts/movement/player.gd`, `game_resources/audio`, camera shake settings.
 
-- FEAT-003: Level-end body reveal loop
-  - Priority: P0 | Effort: S | Risk: Low
-  - Acceptance: Reaching `body_goal.tscn` triggers dialogue (`not_my_body.dialogue`) and shows `level_end.tscn` with Continue to next world/level.
-  - Touchpoints: `scenes/common/world_obstacles/body_goal.tscn`, `scripts/gameplay/world.gd`, `scenes/common/ui/level_end.gd`, dialogue resources.
-  - Dependencies: FEAT-002 (checkpoint/death flow) to avoid conflicts.
-
-- FEAT-004: Camera framing & readability
-  - Priority: P1 | Effort: M | Risk: Med
-  - Acceptance: Camera keeps launch origin and target in view; reduce shake intensity toggle; ensure trajectory line not obscured. Validate on world_1 levels.
-  - Touchpoints: `scenes/common/camera/*`, Phantom Camera settings, level camera triggers.
-  - Dependencies: FEAT-001.
-
-- FEAT-005: Accessibility & settings basics
-  - Priority: P1 | Effort: M | Risk: Low
-  - Acceptance: Audio volume toggle/sliders wired to SoundManager; optional screen shake toggle; document keybindings; placeholder for controller support.
-  - Touchpoints: `scripts/ui/settings_control.gd`, `game_resources/settings/default.tres`, camera noise emitters.
-  - Dependencies: FEAT-004 (shake control) optional.
-
-- FEAT-006: Export readiness
-  - Priority: P1 | Effort: S | Risk: Med
-  - Acceptance: Web and Windows exports build without missing assets; Linux preset path set; version info updated.
-  - Touchpoints: `export_presets.cfg`, `project.godot`, build pipeline docs.
-  - Dependencies: Stabilized features.
-
-## Supporting Tasks
-- TASK-001: Verify gravity value and align trajectory preview with runtime gravity.
-  - Priority: P0 | Effort: S | Risk: Med
-  - Acceptance: Document actual gravity in `slingshot_spec.md`; adjust preview math if needed.
-  - Dependencies: FEAT-001.
-
-- TASK-002: Audit SaveManager wiring
-  - Priority: P1 | Effort: S | Risk: Med
-  - Acceptance: Determine whether saves/settings persist; document or disable nonfunctional UI elements.
-  - Dependencies: None.
-
-- TASK-003: Level content review
-  - Priority: P1 | Effort: M | Risk: Med
-  - Acceptance: List hazards/checkpoints/body goal placement per level; ensure no blind hazards; update `design.md` with findings.
-  - Dependencies: FEAT-004.
-
-- TASK-004: Soft-lock prevention
-  - Priority: P0 | Effort: M | Risk: Med
-  - Acceptance: Add fail volumes or unstuck timer where bounce traps exist; braking should allow recovery. Document locations fixed.
-  - Dependencies: FEAT-002.
-
-## Bugs / Issues
-- BUG-001: Rotation reset tied to `move_up` instead of dedicated `reset_rotation` action
-  - Priority: P1 | Effort: S | Risk: Low
-  - Acceptance: Update input mapping and UI hints; ensure trajectory preview handles reset cleanly.
-  - Touchpoints: `scripts/movement/player.gd`, `project.godot` input map.
-
-## Chores
-- CHORE-001: Update documentation after each feature change (journal/todo/specs).
-  - Priority: P1 | Effort: S | Risk: Low
-  - Acceptance: `.codex/` files reflect latest implementation and decisions.
-
+## Immediate Next 10 Tasks
+1. P0-01 Fix sidecar null usage.  
+2. P0-02 Add level-end goal to World 2.  
+3. P0-03 Add restart/unstuck control in HUD/pause.  
+4. P0-04 Validate trajectory vs physics and document gravity.  
+5. P0-05 Audit World 2 spawn flow (`world.gd` vs `world_sidecar.gd`).  
+6. P0-06 Improve locked door feedback and HUD key usage.  
+7. P1-01 Tweak camera triggers/limits and add shake toggle.  
+8. P1-02 Decide and wire/hide Save/Load.  
+9. P1-03 Improve HUD/tutorial onboarding for aim/brake.  
+10. P1-04 Run level content QA pass for fairness/soft-locks.
